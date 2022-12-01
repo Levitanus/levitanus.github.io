@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Example of restricting statically-checked mutability for types, that are not originally designed for this (e.g. FFI wrappers etc) or which uses interior mutability, but still need verbose API interface."><meta name="keywords" content="rust, rustlang, rust-lang, generic_mutability_test"><title>generic_mutability_test - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../normalize.css"><link rel="stylesheet" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../ayu.css" disabled><link rel="stylesheet" href="../dark.css" disabled><link rel="stylesheet" href="../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../storage.js"></script><script defer src="../crates.js"></script><script defer src="../main.js"></script><noscript><link rel="stylesheet" href="../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../favicon.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../generic_mutability_test/index.html"><div class="logo-container"><img class="rust-logo" src="../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../generic_mutability_test/index.html"><div class="logo-container"><img class="rust-logo" src="../rust-logo.svg" alt="logo"></div></a><h2 class="location"><a href="#">Crate generic_mutability_test</a></h2><div class="sidebar-elems"><ul class="block"><li class="version">Version 0.1.0</li><li><a id="all-types" href="all.html">All Items</a></li></ul><section><ul class="block"><li><a href="#modules">Modules</a></li><li><a href="#structs">Structs</a></li><li><a href="#traits">Traits</a></li><li><a href="#functions">Functions</a></li></ul></section></div></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../generic_mutability_test/index.html"><img class="rust-logo" src="../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="main-heading"><h1 class="fqn">Crate <a class="mod" href="#">generic_mutability_test</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../clipboard.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="srclink" href="../src/generic_mutability_test/main.rs.html#1-538">source</a> · <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Example of restricting statically-checked mutability for types,
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Example of restricting statically-checked mutability for types, that are not originally designed for this (e.g. FFI wrappers etc) or which uses interior mutability, but still need verbose API interface."><meta name="keywords" content="rust, rustlang, rust-lang, generic_mutability_test"><title>generic_mutability_test - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../normalize.css"><link rel="stylesheet" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../ayu.css" disabled><link rel="stylesheet" href="../dark.css" disabled><link rel="stylesheet" href="../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../storage.js"></script><script defer src="../crates.js"></script><script defer src="../main.js"></script><noscript><link rel="stylesheet" href="../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../favicon.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../generic_mutability_test/index.html"><div class="logo-container"><img class="rust-logo" src="../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../generic_mutability_test/index.html"><div class="logo-container"><img class="rust-logo" src="../rust-logo.svg" alt="logo"></div></a><h2 class="location"><a href="#">Crate generic_mutability_test</a></h2><div class="sidebar-elems"><ul class="block"><li class="version">Version 0.1.0</li><li><a id="all-types" href="all.html">All Items</a></li></ul><section><ul class="block"><li><a href="#modules">Modules</a></li><li><a href="#structs">Structs</a></li><li><a href="#traits">Traits</a></li><li><a href="#functions">Functions</a></li></ul></section></div></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../generic_mutability_test/index.html"><img class="rust-logo" src="../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="main-heading"><h1 class="fqn">Crate <a class="mod" href="#">generic_mutability_test</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../clipboard.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="srclink" href="../src/generic_mutability_test/main.rs.html#1-691">source</a> · <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Example of restricting statically-checked mutability for types,
 that are not originally designed for this (e.g. FFI wrappers etc)
 or which uses interior mutability, but still need verbose
 API interface.</p>
@@ -111,4 +111,126 @@ in their mutability.</li>
     <span class="kw">fn </span>make_frame(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; Frame&lt;Mutable&gt; {<span class="macro">todo!</span>()}
     <span class="kw">fn </span>make_button(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; WindowButton&lt;Mutable&gt; {<span class="macro">todo!</span>()}
 }</code></pre></div>
+<p>For the buttons it look the same, just there will be one shared trait,
+that has associated type of parent.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">trait </span>Button&lt;T: ProbablyMutable&gt;
+<span class="kw">where
+    </span><span class="self">Self</span>: Sized,
+{
+    <span class="kw">type </span>Parent;
+    <span class="kw">fn </span>new(parent: <span class="self">Self</span>::Parent, id: usize) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="self">Self</span>&gt;;
+    <span class="kw">fn </span>get_id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize;
+    <span class="kw">fn </span>is_clicked(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool;
+    <span class="kw">fn </span>get_text(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>String;
+}
+<span class="kw">trait </span>ButtonMut
+<span class="kw">where
+    </span><span class="self">Self</span>: Sized,
+{
+    <span class="kw">type </span>Parent;
+    <span class="kw">fn </span>click(<span class="kw-2">&amp;mut </span><span class="self">self</span>);
+    <span class="kw">fn </span>set_text(<span class="kw-2">&amp;mut </span><span class="self">self</span>, text: <span class="kw">impl </span>Into&lt;String&gt;);
+}
+<span class="kw">struct </span>WindowButton&lt;<span class="lifetime">&#39;a</span>, T: ProbablyMutable&gt; {
+    id: usize,
+    text: String,
+    parent: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>Window&lt;<span class="lifetime">&#39;a</span>, T&gt;,
+}
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, T: ProbablyMutable&gt; Button&lt;T&gt; <span class="kw">for </span>WindowButton&lt;<span class="lifetime">&#39;a</span>, T&gt; {
+    <span class="kw">type </span>Parent = <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>Window&lt;<span class="lifetime">&#39;a</span>, T&gt;;
+    <span class="kw">fn </span>new(parent: <span class="self">Self</span>::Parent, id: usize) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="self">Self</span>&gt;;
+    <span class="kw">fn </span>get_id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize;
+    <span class="kw">fn </span>is_clicked(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool;
+    <span class="kw">fn </span>get_text(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>String;
+}
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; ButtonMut <span class="kw">for </span>WindowButton&lt;<span class="lifetime">&#39;a</span>, Mutable&gt; {
+    <span class="kw">type </span>Parent = Window&lt;<span class="lifetime">&#39;a</span>, Mutable&gt;;
+    <span class="kw">fn </span>click(<span class="kw-2">&amp;mut </span><span class="self">self</span>);
+    <span class="kw">fn </span>set_text(<span class="kw-2">&amp;mut </span><span class="self">self</span>, text: <span class="kw">impl </span>Into&lt;String&gt;);
+}
+
+<span class="kw">struct </span>FrameButton&lt;<span class="lifetime">&#39;a</span>, T: ProbablyMutable&gt; {
+    id: usize,
+    text: String,
+    parent: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>Frame&lt;<span class="lifetime">&#39;a</span>, T&gt;,
+}
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, T: ProbablyMutable&gt; Button&lt;T&gt; <span class="kw">for </span>FrameButton&lt;<span class="lifetime">&#39;a</span>, T&gt; {
+    <span class="kw">type </span>Parent = <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>Frame&lt;<span class="lifetime">&#39;a</span>, T&gt;;
+    <span class="kw">fn </span>new(parent: <span class="self">Self</span>::Parent, id: usize) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="self">Self</span>&gt;;
+    <span class="kw">fn </span>get_id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize;
+    <span class="kw">fn </span>is_clicked(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool;
+    <span class="kw">fn </span>get_text(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>String;
+}
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; ButtonMut <span class="kw">for </span>FrameButton&lt;<span class="lifetime">&#39;a</span>, Mutable&gt; {
+    <span class="kw">type </span>Parent = Frame&lt;<span class="lifetime">&#39;a</span>, Mutable&gt;;
+    <span class="kw">fn </span>click(<span class="kw-2">&amp;mut </span><span class="self">self</span>) ;
+    <span class="kw">fn </span>set_text(<span class="kw-2">&amp;mut </span><span class="self">self</span>, text: <span class="kw">impl </span>Into&lt;String&gt;);
+}</code></pre></div>
+<p>All the rest is just a bit of boilerplate. You can surf the entire implementation
+later.</p>
+<h2 id="lets-try-to-play-around"><a href="#lets-try-to-play-around">Let’s try to play around:</a></h2>
+<p>At first, let’s get our root and make sure we will see an output.
+For the file rust env <code>RUST_LOG=debug</code> should be set.</p>
+
+<div class="example-wrap ignore"><div class='tooltip'>ⓘ</div><pre class="rust rust-example-rendered"><code>env_logger::init();
+<span class="kw">let </span><span class="kw-2">mut </span>root = Root::new();</code></pre></div>
+
+<div class="example-wrap ignore"><div class='tooltip'>ⓘ</div><pre class="rust rust-example-rendered"><code><span class="kw">let </span>window1: Window&lt;Mutable&gt; = root.make_child();</code></pre></div>
+<p>Looks good. Adding a window mutates our root, so, window1 is also mut.
+Let’s add one more!</p>
+
+<div class="example-wrap ignore"><div class='tooltip'>ⓘ</div><pre class="rust rust-example-rendered"><code><span class="kw">let </span>window2 = root.make_child();</code></pre></div>
+<p>Guh!: <code>Err: cannot borrow </code>root<code> as mutable more than once at a time</code>.
+But, generally, this is how it should look like.</p>
+<p>Let’s drop our window, but keep its id to get it later.</p>
+
+<div class="example-wrap ignore"><div class='tooltip'>ⓘ</div><pre class="rust rust-example-rendered"><code><span class="kw">let </span>w1_id: usize = window1.get_id();
+<span class="macro">debug!</span>(<span class="string">&quot;{}&quot;</span>, w1_id);
+drop(window1);</code></pre></div>
+<p>Now root is immutable again.</p>
+<p>Let’s make sure it is and get 2 windows:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>id2: usize = root.make_child().get_id();
+<span class="kw">let </span>window1: Window&lt;Immutable&gt; = root.get_child(w1_id).unwrap();
+<span class="kw">let </span>_window2: Window&lt;Immutable&gt; = root.get_child(id2).unwrap(); <span class="comment">// OK!</span></code></pre></div>
+<p>Interesting, now they are <code>&lt;Immutable&gt;</code>. So, if we try to mutate it,
+compiler will error:</p>
+
+<div class="example-wrap ignore"><div class='tooltip'>ⓘ</div><pre class="rust rust-example-rendered"><code>window1.make_button();
+<span class="comment">//
+</span><span class="prelude-val">Err</span>: no method named `make_button` found <span class="kw">for struct </span>`Window&lt;<span class="lifetime">&#39;_</span>,
+test::Immutable&gt;` <span class="kw">in </span>the current scope. The method was found <span class="kw">for
+</span>`Window&lt;<span class="lifetime">&#39;a</span>, test::Mutable&gt;`</code></pre></div>
+<p>Continuing:</p>
+
+<div class="example-wrap ignore"><div class='tooltip'>ⓘ</div><pre class="rust rust-example-rendered"><code><span class="kw">let </span><span class="kw-2">mut </span>window1: Window&lt;Mutable&gt; = root.get_child_mut(w1_id).unwrap();
+<span class="kw">let </span>button: WindowButton&lt;Mutable&gt; = window1.make_button();
+<span class="kw">let </span>b_id: usize = button.get_id();
+<span class="comment">// button is dropped.
+</span><span class="kw">let </span><span class="kw-2">mut </span>frame: Frame&lt;Mutable&gt; = window1.make_frame();
+<span class="kw">let </span>fr_b_id: usize = frame.make_button().get_id();
+<span class="kw">let </span>f_id: usize = frame.get_id();
+<span class="comment">// frame is dropped.
+</span><span class="macro">debug!</span>(<span class="string">&quot;button text: {}&quot;</span>, button.get_text());
+<span class="comment">//
+</span><span class="prelude-val">Err</span>: cannot borrow `window1` <span class="kw">as </span>mutable more than once at a time</code></pre></div>
+<p>Yes, because <code>button</code> was WindowButton<Mutable>.
+But, can we borrow button as immutable?</p>
+
+<div class="example-wrap ignore"><div class='tooltip'>ⓘ</div><pre class="rust rust-example-rendered"><code><span class="kw">let </span>button = window1.get_button(b_id);
+<span class="prelude-val">Err</span>: no method named `get_button` found <span class="kw">for struct </span>`Window&lt;<span class="lifetime">&#39;_</span>, test::Mutable&gt;`
+<span class="kw">in </span>the current scope the method was found <span class="kw">for </span>- `Window&lt;<span class="lifetime">&#39;a</span>, test::Immutable&gt;`</code></pre></div>
+<p>Now, check that multiple immutable borrows live together:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>window1 = root.get_child(w1_id).unwrap();
+<span class="kw">let </span>frame = window1.get_frame(f_id).unwrap();
+<span class="kw">let </span>w_b = window1.get_button(b_id).unwrap();
+<span class="kw">let </span>fr_b = frame.get_button(fr_b_id).unwrap();
+
+<span class="macro">debug!</span>(<span class="string">&quot;is window button clicked: {}&quot;</span>, w_b.is_clicked());
+<span class="macro">debug!</span>(<span class="string">&quot;is frame button clicked: {}&quot;</span>, fr_b.is_clicked());</code></pre></div>
+<p>See full module at <a href="https://github.com/Levitanus/generic_mutability_test">GitHub</a>!
+These docs are available at 
+<a href="https://levitanus.github.io/generic-mutability-test-doc/generic_mutability_test/index.html">GitHub pages</a>.</p>
 </div></details><h2 id="modules" class="small-section-header"><a href="#modules">Modules</a></h2><div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="mod" href="monkey_ffi/index.html" title="generic_mutability_test::monkey_ffi mod">monkey_ffi</a><span title="Restricted Visibility">&nbsp;🔒</span> </div><div class="item-right docblock-short">module that imitates some FFI functions set.</div></div></div><h2 id="structs" class="small-section-header"><a href="#structs">Structs</a></h2><div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.Frame.html" title="generic_mutability_test::Frame struct">Frame</a><span title="Restricted Visibility">&nbsp;🔒</span> </div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.FrameButton.html" title="generic_mutability_test::FrameButton struct">FrameButton</a><span title="Restricted Visibility">&nbsp;🔒</span> </div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.Immutable.html" title="generic_mutability_test::Immutable struct">Immutable</a><span title="Restricted Visibility">&nbsp;🔒</span> </div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.Mutable.html" title="generic_mutability_test::Mutable struct">Mutable</a><span title="Restricted Visibility">&nbsp;🔒</span> </div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.Root.html" title="generic_mutability_test::Root struct">Root</a><span title="Restricted Visibility">&nbsp;🔒</span> </div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.Window.html" title="generic_mutability_test::Window struct">Window</a><span title="Restricted Visibility">&nbsp;🔒</span> </div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.WindowButton.html" title="generic_mutability_test::WindowButton struct">WindowButton</a><span title="Restricted Visibility">&nbsp;🔒</span> </div></div></div><h2 id="traits" class="small-section-header"><a href="#traits">Traits</a></h2><div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="trait" href="trait.Button.html" title="generic_mutability_test::Button trait">Button</a><span title="Restricted Visibility">&nbsp;🔒</span> </div></div><div class="item-row"><div class="item-left module-item"><a class="trait" href="trait.ButtonMut.html" title="generic_mutability_test::ButtonMut trait">ButtonMut</a><span title="Restricted Visibility">&nbsp;🔒</span> </div></div><div class="item-row"><div class="item-left module-item"><a class="trait" href="trait.ProbablyMutable.html" title="generic_mutability_test::ProbablyMutable trait">ProbablyMutable</a><span title="Restricted Visibility">&nbsp;🔒</span> </div></div></div><h2 id="functions" class="small-section-header"><a href="#functions">Functions</a></h2><div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="fn" href="fn.main.html" title="generic_mutability_test::main fn">main</a><span title="Restricted Visibility">&nbsp;🔒</span> </div></div></div></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="generic_mutability_test" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0-nightly (6b3ede3f7 2022-10-13)" ></div></body></html>
