@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["main",""]],"mod":[["monkey_ffi","module that imitates some FFI functions set."]],"struct":[["Frame",""],["FrameButton",""],["Immutable",""],["Mutable",""],["Root",""],["Window",""],["WindowButton",""]],"trait":[["Button",""],["ButtonMut",""],["ProbablyMutable",""]]};

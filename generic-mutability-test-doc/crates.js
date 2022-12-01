@@ -1,0 +1,1 @@
+window.ALL_CRATES = ["aho_corasick","atty","cfg_if","env_logger","generic_mutability_test","humantime","libc","log","memchr","regex","regex_syntax","termcolor"];
