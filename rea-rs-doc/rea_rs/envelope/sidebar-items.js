@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":[["EnvelopePointShape",""],["EnvelopeSendInfo","If Envelope corresponds to send or receive."]],"struct":[["AutomationItem",""],["Envelope","Can be either TrackEnvelope, or TakeEnvelope"],["EnvelopeAutomationFlags","Current envelope automation state"],["EnvelopeEvaluateResult","Returned by [Envelope::evaluate]."],["EnvelopePoint",""]]};

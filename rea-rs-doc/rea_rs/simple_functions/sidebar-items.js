@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":[["ProjectIterator","Iterates through all opened projects."]]};

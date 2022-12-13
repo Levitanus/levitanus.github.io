@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":[["ProjectContext","Determines the project in which a function should be executed."]],"mod":[["project_info",""]],"struct":[["FocusedFxResult","Returned by [Project::focused_fx]"],["ItemsIterator",""],["Project",""],["SelectedItemsIterator",""],["SelectedTracksIterator",""],["TracksIterator",""]]};

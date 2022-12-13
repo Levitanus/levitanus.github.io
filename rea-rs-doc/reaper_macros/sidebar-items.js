@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"attr":[["reaper_extension_plugin","Macro for easily bootstrapping a REAPER extension plug-in."]]};

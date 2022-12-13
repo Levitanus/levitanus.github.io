@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":[["ItemFadeShape","Item fade-in\\fade-out shape."],["ItemSoloOverride","Item personal solo state."]],"struct":[["Item",""],["ItemFade","Item FadeIn\\FadeOut parameters."],["ItemSplit","Holds two new items after [Item::split]."]]};

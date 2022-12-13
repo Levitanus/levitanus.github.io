@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":[["Source",""],["SourceSectionInfo","If a section/reverse block, retrieves offset/len/reverse."]]};

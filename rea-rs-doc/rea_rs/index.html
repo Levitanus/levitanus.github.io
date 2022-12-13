@@ -1,0 +1,149 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Easy to use ReaScript API."><meta name="keywords" content="rust, rustlang, rust-lang, rea_rs"><title>rea_rs - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../normalize.css"><link rel="stylesheet" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../ayu.css" disabled><link rel="stylesheet" href="../dark.css" disabled><link rel="stylesheet" href="../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../storage.js"></script><script defer src="../crates.js"></script><script defer src="../main.js"></script><noscript><link rel="stylesheet" href="../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../favicon.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../rea_rs/index.html"><div class="logo-container"><img class="rust-logo" src="../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../rea_rs/index.html"><div class="logo-container"><img class="rust-logo" src="../rust-logo.svg" alt="logo"></div></a><h2 class="location"><a href="#">Crate rea_rs</a></h2><div class="sidebar-elems"><ul class="block"><li class="version">Version 0.1.0</li><li><a id="all-types" href="all.html">All Items</a></li></ul><section><ul class="block"><li><a href="#reexports">Re-exports</a></li><li><a href="#modules">Modules</a></li><li><a href="#structs">Structs</a></li><li><a href="#traits">Traits</a></li></ul></section></div></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../rea_rs/index.html"><img class="rust-logo" src="../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="main-heading"><h1 class="fqn">Crate <a class="mod" href="#">rea_rs</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../clipboard.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="srclink" href="../src/rea_rs/lib.rs.html#1-232">source</a> · <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Easy to use ReaScript API.</p>
+<p>While <a href="https://github.com/helgoboss/reaper-rs">reaper-rs</a> is
+full-implemented at low-level, and, partially implemented at medium-level,
+on top of it (mostly, on top of low-level) this crate builds API that is
+pleasure to use.</p>
+<p>Actually, for the moment it is the better version of
+<a href="https://github.com/Levitanus/reapy-boost">Reapy</a> project.
+The main skeleton of this API is cloned from the Reapy, but reimplemented
+in a more “rusty” way. Also, a bunch of new functions are added to <a href="track/struct.Track.html" title="Track">Track</a>,
+<a href="item/struct.Item.html" title="Item">Item</a> and <a href="take/struct.Take.html" title="Take">Take</a>, as well as a good new implementation for <a href="ext_state/struct.ExtState.html" title="ExtState">ExtState</a> and
+<a href="midi/index.html" title="midi">midi</a> was made. I would say, that currently wrapped ~95% of Track, Take,
+Item, <a href="audio_accessor/struct.AudioAccessor.html" title="AudioAccessor">AudioAccessor</a> and <a href="fx/trait.FX.html" title="FX">FX</a> original functions; about of 70% for
+<a href="envelope/struct.Envelope.html" title="Envelope">Envelope</a> and <a href="source/struct.Source.html" title="Source">Source</a>. And the rest is probably, less, then 50%.</p>
+<p>It should also be possible to use from VST Plugin, but this has not yet
+been tested at all.</p>
+<p>Almost everything needed to communicate to crate is re-exported (like
+<a href="../reaper_medium/index.html" title="reaper_medium">reaper_medium</a> and <a href="../reaper_low/index.html" title="reaper_low">reaper_low</a> types), but for comfortably making
+extension-plugin entry-point it’s better to also use reaper-macros
+dependency:</p>
+
+<div class="example-wrap ignore"><div class='tooltip'>ⓘ</div><pre class="rust rust-example-rendered"><code>[dependencies]
+reaper-macros = {git = <span class="string">&quot;https://github.com/Levitanus/reaper-rs&quot;</span>, branch = <span class="string">&quot;stable_for_rea-rs&quot;</span>}</code></pre></div>
+<p>Until there is no new version of <code>reaper-rs</code> which differs from the current
+master branch a lot, this is the dependency list I highly recommend:</p>
+
+<div class="example-wrap ignore"><div class='tooltip'>ⓘ</div><pre class="rust rust-example-rendered"><code>[dependencies]
+rea-rs = {git = <span class="string">&quot;https://github.com/Levitanus/rea-rs&quot;</span>}
+reaper-low = <span class="string">&quot;0.1.0&quot;
+</span>reaper-macros = <span class="string">&quot;0.1.0&quot;
+</span>reaper-medium = <span class="string">&quot;0.1.0&quot;
+
+</span>[patch.crates-io]
+reaper-low = {git = <span class="string">&quot;https://github.com/Levitanus/reaper-rs&quot;</span>, branch = <span class="string">&quot;stable_for_rea-rs&quot;</span>}
+reaper-macros = {git = <span class="string">&quot;https://github.com/Levitanus/reaper-rs&quot;</span>, branch = <span class="string">&quot;stable_for_rea-rs&quot;</span>}
+reaper-medium = {git = <span class="string">&quot;https://github.com/Levitanus/reaper-rs&quot;</span>, branch = <span class="string">&quot;stable_for_rea-rs&quot;</span>}</code></pre></div>
+<p>But, actually, all medium- and low-level functionality is still existing in
+the <a href="reaper/struct.Reaper.html" title="Reaper">Reaper</a> object. Just use <a href="reaper/struct.Reaper.html#method.low" title="Reaper::low">Reaper::low</a>, <a href="reaper/struct.Reaper.html#method.medium" title="Reaper::medium">Reaper::medium</a> and
+<a href="reaper/struct.Reaper.html#method.medium_session" title="Reaper::medium_session">Reaper::medium_session</a>.</p>
+<p>The Common entry point should look like this:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>rea_rs::{errors::ReaperResult, ActionKind, Reaper, PluginContext};
+<span class="kw">use </span>reaper_macros::reaper_extension_plugin;
+<span class="kw">use </span>std::error::Error;
+
+<span class="attribute">#[reaper_extension_plugin]
+</span><span class="kw">fn </span>plugin_main(context: PluginContext) -&gt; <span class="prelude-ty">Result</span>&lt;(), Box&lt;<span class="kw">dyn </span>Error&gt;&gt; {
+    Reaper::load(context);
+    <span class="kw">let </span>reaper = Reaper::get_mut();
+    <span class="kw">let </span>message = <span class="string">&quot;Hello from small extension&quot;</span>;
+    reaper.show_console_msg(message);
+    <span class="prelude-val">Ok</span>(())
+}</code></pre></div>
+<p>Since, there are not many things to be done at the start time of Reaper,
+there are two common ways to invoke the code: Actions and <a href="trait.ControlSurface.html" title="ControlSurface">ControlSurface</a>.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>rea_rs::{
+ActionKind, ControlSurface, PluginContext, Reaper, RegisteredAction,
+};
+<span class="kw">use </span>reaper_macros::reaper_extension_plugin;
+<span class="kw">use </span>std::error::Error;
+
+<span class="attribute">#[derive(Debug)]
+</span><span class="kw">struct </span>Listener {
+    action: RegisteredAction,
+}
+
+<span class="comment">// Full list of function larger.
+</span><span class="kw">impl </span>ControlSurface <span class="kw">for </span>Listener {
+    <span class="kw">fn </span>run(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        Reaper::get().perform_action(<span class="self">self</span>.action.command_id, <span class="number">0</span>, <span class="prelude-val">None</span>);
+    }
+}
+
+<span class="kw">fn </span>my_action_func(_flag: i32) -&gt; <span class="prelude-ty">Result</span>&lt;(), Box&lt;<span class="kw">dyn </span>Error&gt;&gt; {
+    Reaper::get().show_console_msg(<span class="string">&quot;running&quot;</span>);
+    <span class="prelude-val">Ok</span>(())
+}
+
+<span class="attribute">#[reaper_extension_plugin]
+</span><span class="kw">fn </span>plugin_main(context: PluginContext) -&gt; <span class="prelude-ty">Result</span>&lt;(), Box&lt;<span class="kw">dyn </span>Error&gt;&gt; {
+    Reaper::load(context);
+    <span class="kw">let </span>reaper = Reaper::get_mut();
+
+    <span class="kw">let </span>action = reaper.register_action(
+        <span class="comment">// This will be capitalized and used as action ID in action window
+        </span><span class="string">&quot;command_name&quot;</span>,
+        <span class="comment">// This is the line user searches action for
+        </span><span class="string">&quot;description&quot;</span>,
+        my_action_func,
+        <span class="comment">// Only type currently supported
+        </span>ActionKind::NotToggleable,
+    )<span class="question-mark">?</span>;
+
+    reaper
+        .medium_session_mut()
+        .plugin_register_add_csurf_inst(Box::new(Listener { action })).unwrap();
+    <span class="prelude-val">Ok</span>(())
+}</code></pre></div>
+<p>There are float values in API. I recommend to use <code>float_eq</code> crate.</p>
+<h2 id="api-structure"><a href="#api-structure">API structure.</a></h2>
+<p>Most of the time, API is used hierarchically: <a href="reaper/struct.Reaper.html" title="Reaper">Reaper</a> holds top-level
+functions and can return <a href="project/struct.Project.html" title="Project">Project</a>, <a href="item/struct.Item.html" title="Item">Item</a> etc. While <a href="project/struct.Project.html" title="Project">Project</a> can
+manipulate by <a href="track/struct.Track.html" title="Track">Track</a>, <a href="item/struct.Item.html" title="Item">Item</a>, <a href="take/struct.Take.html" title="Take">Take</a>. The key point of the hierarchical
+structure — to be sure safe as long as possible. Since Project is alive, it
+is safe to refer from track to it. The same with other children. By the
+same reason, it’s almost impossible to mutate two object at a time. If one
+track is mutable, it responses for the whole underlying objects. And we can
+be almost sure, that the rest of tracks consist of objects, we left them
+before.</p>
+<p>The most part of API is covered by
+<a href="https://github.com/Levitanus/rea-rs/blob/main/test/test/src/tests.rs">tests</a>,
+and they are a good set of usage examples.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>rea_rs::Reaper;
+<span class="kw">use </span>std::collections::HashMap;
+
+<span class="kw">let </span>rpr = Reaper::get();
+<span class="kw">let </span>captions =
+<span class="macro">vec!</span>[<span class="string">&quot;age(18)&quot;</span>, <span class="string">&quot;name(user)&quot;</span>, <span class="string">&quot;leave blank&quot;</span>, <span class="string">&quot;fate(atheist)&quot;</span>];
+<span class="kw">let </span><span class="kw-2">mut </span>answers = HashMap::new();
+answers.insert(String::from(<span class="string">&quot;age(18)&quot;</span>), String::from(<span class="string">&quot;18&quot;</span>));
+answers.insert(String::from(<span class="string">&quot;name(user)&quot;</span>), String::from(<span class="string">&quot;user&quot;</span>));
+answers.insert(String::from(<span class="string">&quot;leave blank&quot;</span>), String::from(<span class="string">&quot;&quot;</span>));
+answers.insert(String::from(<span class="string">&quot;fate(atheist)&quot;</span>), String::from(<span class="string">&quot;atheist&quot;</span>));
+
+<span class="kw">let </span>result = rpr.get_user_inputs(
+    <span class="string">&quot;Fill values as asked in fields&quot;</span>,
+    captions,
+    <span class="prelude-val">None</span>,
+).unwrap();
+<span class="macro">assert_eq!</span>(result, answers);</code></pre></div>
+<h2 id="better-to-know-about"><a href="#better-to-know-about">Better to know about</a></h2>
+<p>For the moment, downsides of API are:</p>
+<ul>
+<li>top-level functionality: I’m not sure, that at least a half of little
+reaper functions is wrapped. Like all windowing and theming stuff.</li>
+<li>GUI. As well as with <code>reapy</code>, GUI is an issue. In the long perspective, I
+feel that <a href="https://github.com/emilk/egui">egui</a> backend in the <code>Win32</code>
+and <code>Swell</code> should be made. But at the moment, possibly, any backend of
+<code>egui</code> will suit.</li>
+<li>Thread-safety. It’s important to know, that almost nothing of <a href="reaper/struct.Reaper.html" title="Reaper">Reaper</a>
+should left the main thread. There are some functions, that are designed
+for audio thread, and some, that are safe to execute from any thread.
+But, basically, here is a rule: if you make a listener, gui or socket
+communication — <code>Reaper</code> lives in main thread, and else made by
+<a href="https://doc.rust-lang.org/nightly/std/sync/mpsc/index.html" title="std::sync::mpsc">std::sync::mpsc</a>.</li>
+</ul>
+<p>Enjoy the coding!</p>
+</div></details><h2 id="reexports" class="small-section-header"><a href="#reexports">Re-exports</a></h2><div class="item-table"><div class="item-row"><div class="item-left import-item" id="reexport.WithReaperPtr"><code>pub use utils::<a class="trait" href="utils/trait.WithReaperPtr.html" title="trait rea_rs::utils::WithReaperPtr">WithReaperPtr</a>;</code></div></div><div class="item-row"><div class="item-left import-item"><code>pub use <a class="mod" href="reaper/index.html" title="mod rea_rs::reaper">reaper</a>::*;</code></div></div><div class="item-row"><div class="item-left import-item"><code>pub use <a class="mod" href="simple_functions/index.html" title="mod rea_rs::simple_functions">simple_functions</a>::*;</code></div></div><div class="item-row"><div class="item-left import-item"><code>pub use <a class="mod" href="hardware_functions/index.html" title="mod rea_rs::hardware_functions">hardware_functions</a>::*;</code></div></div><div class="item-row"><div class="item-left import-item"><code>pub use <a class="mod" href="project/index.html" title="mod rea_rs::project">project</a>::*;</code></div></div><div class="item-row"><div class="item-left import-item"><code>pub use <a class="mod" href="misc_enums/index.html" title="mod rea_rs::misc_enums">misc_enums</a>::*;</code></div></div><div class="item-row"><div class="item-left import-item"><code>pub use <a class="mod" href="misc_types/index.html" title="mod rea_rs::misc_types">misc_types</a>::*;</code></div></div><div class="item-row"><div class="item-left import-item"><code>pub use <a class="mod" href="ext_state/index.html" title="mod rea_rs::ext_state">ext_state</a>::*;</code></div></div><div class="item-row"><div class="item-left import-item"><code>pub use <a class="mod" href="marker/index.html" title="mod rea_rs::marker">marker</a>::*;</code></div></div><div class="item-row"><div class="item-left import-item"><code>pub use <a class="mod" href="track/index.html" title="mod rea_rs::track">track</a>::*;</code></div></div><div class="item-row"><div class="item-left import-item"><code>pub use <a class="mod" href="send/index.html" title="mod rea_rs::send">send</a>::*;</code></div></div><div class="item-row"><div class="item-left import-item"><code>pub use <a class="mod" href="item/index.html" title="mod rea_rs::item">item</a>::*;</code></div></div><div class="item-row"><div class="item-left import-item"><code>pub use <a class="mod" href="take/index.html" title="mod rea_rs::take">take</a>::*;</code></div></div><div class="item-row"><div class="item-left import-item"><code>pub use <a class="mod" href="source/index.html" title="mod rea_rs::source">source</a>::*;</code></div></div><div class="item-row"><div class="item-left import-item"><code>pub use <a class="mod" href="midi/index.html" title="mod rea_rs::midi">midi</a>::*;</code></div></div><div class="item-row"><div class="item-left import-item"><code>pub use <a class="mod" href="fx/index.html" title="mod rea_rs::fx">fx</a>::*;</code></div></div><div class="item-row"><div class="item-left import-item"><code>pub use <a class="mod" href="audio_accessor/index.html" title="mod rea_rs::audio_accessor">audio_accessor</a>::*;</code></div></div><div class="item-row"><div class="item-left import-item"><code>pub use <a class="mod" href="envelope/index.html" title="mod rea_rs::envelope">envelope</a>::*;</code></div></div></div><h2 id="modules" class="small-section-header"><a href="#modules">Modules</a></h2><div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="mod" href="audio_accessor/index.html" title="rea_rs::audio_accessor mod">audio_accessor</a></div></div><div class="item-row"><div class="item-left module-item"><a class="mod" href="envelope/index.html" title="rea_rs::envelope mod">envelope</a></div></div><div class="item-row"><div class="item-left module-item"><a class="mod" href="errors/index.html" title="rea_rs::errors mod">errors</a></div></div><div class="item-row"><div class="item-left module-item"><a class="mod" href="ext_state/index.html" title="rea_rs::ext_state mod">ext_state</a></div></div><div class="item-row"><div class="item-left module-item"><a class="mod" href="fx/index.html" title="rea_rs::fx mod">fx</a></div></div><div class="item-row"><div class="item-left module-item"><a class="mod" href="hardware_functions/index.html" title="rea_rs::hardware_functions mod">hardware_functions</a></div></div><div class="item-row"><div class="item-left module-item"><a class="mod" href="item/index.html" title="rea_rs::item mod">item</a></div></div><div class="item-row"><div class="item-left module-item"><a class="mod" href="marker/index.html" title="rea_rs::marker mod">marker</a></div></div><div class="item-row"><div class="item-left module-item"><a class="mod" href="midi/index.html" title="rea_rs::midi mod">midi</a></div><div class="item-right docblock-short">Handles all operations with Take MIDI.</div></div><div class="item-row"><div class="item-left module-item"><a class="mod" href="misc_enums/index.html" title="rea_rs::misc_enums mod">misc_enums</a></div></div><div class="item-row"><div class="item-left module-item"><a class="mod" href="misc_types/index.html" title="rea_rs::misc_types mod">misc_types</a></div></div><div class="item-row"><div class="item-left module-item"><a class="mod" href="project/index.html" title="rea_rs::project mod">project</a></div></div><div class="item-row"><div class="item-left module-item"><a class="mod" href="reaper/index.html" title="rea_rs::reaper mod">reaper</a></div></div><div class="item-row"><div class="item-left module-item"><a class="mod" href="send/index.html" title="rea_rs::send mod">send</a></div></div><div class="item-row"><div class="item-left module-item"><a class="mod" href="simple_functions/index.html" title="rea_rs::simple_functions mod">simple_functions</a></div></div><div class="item-row"><div class="item-left module-item"><a class="mod" href="source/index.html" title="rea_rs::source mod">source</a></div></div><div class="item-row"><div class="item-left module-item"><a class="mod" href="take/index.html" title="rea_rs::take mod">take</a></div></div><div class="item-row"><div class="item-left module-item"><a class="mod" href="track/index.html" title="rea_rs::track mod">track</a></div></div><div class="item-row"><div class="item-left module-item"><a class="mod" href="utils/index.html" title="rea_rs::utils mod">utils</a></div></div></div><h2 id="structs" class="small-section-header"><a href="#structs">Structs</a></h2><div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.PluginContext.html" title="rea_rs::PluginContext struct">PluginContext</a></div><div class="item-right docblock-short">This represents the context which is needed to access REAPER functions from plug-ins.</div></div></div><h2 id="traits" class="small-section-header"><a href="#traits">Traits</a></h2><div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="trait" href="trait.ControlSurface.html" title="rea_rs::ControlSurface trait">ControlSurface</a></div><div class="item-right docblock-short">Consumers need to implement this trait in order to get notified about various REAPER events.</div></div></div></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="rea_rs" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.0-nightly (6b3ede3f7 2022-10-13)" ></div></body></html>
