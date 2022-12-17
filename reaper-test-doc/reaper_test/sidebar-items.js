@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":[["integration_test",""]],"struct":[["PluginContext","This represents the context which is needed to access REAPER functions from plug-ins."],["ReaperTest",""],["TestStep",""]],"type":[["TestCallback",""],["TestStepResult",""]]};
